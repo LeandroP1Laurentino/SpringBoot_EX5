@@ -56,7 +56,7 @@ public class FuncionarioControllerTest {
     @Test
     void deveCriarFuncionarioComSucesso() throws Exception {
         Funcionario funcionario = new Funcionario();
-        funcionario.setNome("Eduardo");
+        funcionario.setNome("Leandro");
         funcionario.setDataContratacao(LocalDate.now());
         funcionario.setTrabalhoRemoto(true);
         funcionario.setDepartamento(departamentoPadrao);
@@ -70,7 +70,7 @@ public class FuncionarioControllerTest {
                 )
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id").exists())
-                .andExpect(jsonPath("$.nome").value("Eduardo"))
+                .andExpect(jsonPath("$.nome").value("Leandro"))
                 .andExpect(jsonPath("$.trabalhoRemoto").value(true))
                 .andExpect(jsonPath("$.departamento.id").value(departamentoPadrao.getId()));
     }
@@ -78,7 +78,7 @@ public class FuncionarioControllerTest {
     @Test
     void deveRetornarErro400AoCriarFuncionarioComDataFutura() throws Exception {
         Funcionario funcionario = new Funcionario();
-        funcionario.setNome("Eduardo");
+        funcionario.setNome("Leandro");
         funcionario.setDataContratacao(LocalDate.now().plusDays(1));
         funcionario.setTrabalhoRemoto(true);
         funcionario.setDepartamento(departamentoPadrao);
@@ -96,7 +96,7 @@ public class FuncionarioControllerTest {
     @Test
     void deveListarTodosOsFuncionarios() throws Exception {
         Funcionario funcionario = new Funcionario();
-        funcionario.setNome("Eduardo");
+        funcionario.setNome("Leandro");
         funcionario.setDataContratacao(LocalDate.now());
         funcionario.setTrabalhoRemoto(true);
         funcionario.setDepartamento(departamentoPadrao);
@@ -111,7 +111,7 @@ public class FuncionarioControllerTest {
     @Test
     void deveBuscarFuncionarioPorId() throws Exception {
         Funcionario funcionario = new Funcionario();
-        funcionario.setNome("Eduardo");
+        funcionario.setNome("Leandro");
         funcionario.setDataContratacao(LocalDate.now());
         funcionario.setTrabalhoRemoto(true);
         funcionario.setDepartamento(departamentoPadrao);
@@ -123,7 +123,7 @@ public class FuncionarioControllerTest {
                 )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(funcionarioSalvo.getId()))
-                .andExpect(jsonPath("$.nome").value("Eduardo"))
+                .andExpect(jsonPath("$.nome").value("Leandro"))
                 .andExpect(jsonPath("$.trabalhoRemoto").value(true))
                 .andExpect(jsonPath("$.departamento.id").value(departamentoPadrao.getId()));
     }
@@ -131,14 +131,14 @@ public class FuncionarioControllerTest {
     @Test
     void deveAtualizarFuncionario() throws Exception {
         Funcionario funcionario = new Funcionario();
-        funcionario.setNome("Eduardo");
+        funcionario.setNome("Leandro");
         funcionario.setDataContratacao(LocalDate.now());
         funcionario.setTrabalhoRemoto(true);
         funcionario.setDepartamento(departamentoPadrao);
 
         Funcionario funcionarioSalvo = funcionarioRepository.save(funcionario);
 
-        funcionarioSalvo.setNome("Eduardo Atualizado");
+        funcionarioSalvo.setNome("Leandro Atualizado");
         funcionarioSalvo.setTrabalhoRemoto(false);
 
         String json = objectMapper.writeValueAsString(funcionarioSalvo);
@@ -149,14 +149,14 @@ public class FuncionarioControllerTest {
                     .content(json)
                 )
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.nome").value("Eduardo Atualizado"))
+                .andExpect(jsonPath("$.nome").value("Leandro Atualizado"))
                 .andExpect(jsonPath("$.trabalhoRemoto").value(false));
     }
 
     @Test
     void deveApagarFuncionario() throws Exception {
         Funcionario funcionario = new Funcionario();
-        funcionario.setNome("Eduardo");
+        funcionario.setNome("Leandro");
         funcionario.setDataContratacao(LocalDate.now());
         funcionario.setTrabalhoRemoto(true);
         funcionario.setDepartamento(departamentoPadrao);

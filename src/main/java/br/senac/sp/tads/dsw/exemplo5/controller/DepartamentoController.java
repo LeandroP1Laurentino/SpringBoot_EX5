@@ -38,7 +38,7 @@ public class DepartamentoController {
     @GetMapping("/{id}")
     public Departamento buscarPorId(@PathVariable Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Departamento não encontrado"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Departamento não encontrado!!"));
     }
 
     @PostMapping
